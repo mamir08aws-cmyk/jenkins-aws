@@ -9,7 +9,7 @@ pkill -f "python3 app.py" || true
 # Pull latest code
 mkdir -p $APP_DIR
 cd $APP_DIR
-git clone https://github.com/YOUR_ORG/YOUR_REPO.git . 2>/dev/null || git pull
+git clone https://github.com/mamir08aws-cmyk/jenkins-aws.git . 2>/dev/null || git pull
 
 # Install dependencies
 pip3 install flask --quiet

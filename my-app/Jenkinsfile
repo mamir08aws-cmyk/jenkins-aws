@@ -4,7 +4,7 @@ pipeline {
     environment {
         AWS_REGION = 'us-east-1'
         TF_DIR     = 'infra'
-        REPO_URL   = 'https://github.com/YOUR_ORG/YOUR_REPO.git'
+        REPO_URL   = 'https://github.com/mamir08aws-cmyk/jenkins-aws.git'
     }
 
     stages {
