@@ -3,7 +3,7 @@ set -e
 
 APP_DIR="/home/ec2-user/app"
 
-# Install dependencies directly (don't rely on user_data timing)
+# Install dependencies
 sudo yum install -y python3 python3-pip git
 pip3 install flask --quiet
 
