@@ -110,24 +110,24 @@ pipeline {
                             ec2-user@${EC2_IP}:/tmp/
 
                         # Run deployment via Jenkins wrapper
-                        ssh -o StrictHostKeyChecking=no ec2-user@${EC2_IP} << 'SSH_EOF'
-                        #!/bin/bash
-                        set -e
-                        export HIBP_DATA_DIR="${HIBP_DATA_DIR}"
-                        export HIBP_SERVICE_DIR="${HIBP_SERVICE_DIR}"
-                        export HIBP_PORT="${HIBP_PORT}"
-                        export HIBP_SERVICE_USER="${HIBP_SERVICE_USER}"
-                        export HIBP_DOTNET_DIR="${HIBP_DOTNET_DIR}"
-                        export HIBP_PARALLELISM="${HIBP_PARALLELISM}"
-                        export HIBP_SKIP_DOWNLOAD="${HIBP_SKIP_DOWNLOAD}"
-                        export HIBP_SKIP_INDEX="${HIBP_SKIP_INDEX}"
-                        export HIBP_PINGONE_IPS="${HIBP_PINGONE_IPS}"
-                        export HIBP_ADMIN_IP="${HIBP_ADMIN_IP}"
+                        ssh -o StrictHostKeyChecking=no ec2-user@${EC2_IP} << EOF
+#!/bin/bash
+set -e
+export HIBP_DATA_DIR="${HIBP_DATA_DIR}"
+export HIBP_SERVICE_DIR="${HIBP_SERVICE_DIR}"
+export HIBP_PORT="${HIBP_PORT}"
+export HIBP_SERVICE_USER="${HIBP_SERVICE_USER}"
+export HIBP_DOTNET_DIR="${HIBP_DOTNET_DIR}"
+export HIBP_PARALLELISM="${HIBP_PARALLELISM}"
+export HIBP_SKIP_DOWNLOAD="${HIBP_SKIP_DOWNLOAD}"
+export HIBP_SKIP_INDEX="${HIBP_SKIP_INDEX}"
+export HIBP_PINGONE_IPS="${HIBP_PINGONE_IPS}"
+export HIBP_ADMIN_IP="${HIBP_ADMIN_IP}"
 
-                        cd /tmp
-                        chmod +x hibp_jenkins_deploy.sh
-                        ./hibp_jenkins_deploy.sh
-SSH_EOF
+cd /tmp
+chmod +x hibp_jenkins_deploy.sh
+./hibp_jenkins_deploy.sh
+EOF
                     """
                 }
             }
