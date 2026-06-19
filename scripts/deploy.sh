@@ -1,40 +1,37 @@
 #!/bin/bash
+# ============================================================================
+#  LEGACY DEPLOYMENT SCRIPT — REPLACED
+#
+#  This script has been replaced with the new HIBP deployment system.
+#  For HIBP (Have I Been Pwned) Password Validation Service, use:
+#
+#    ./hibp_deploy.sh
+#
+#  The HIBP service deploys a password breach checking API with:
+#    - 2 billion+ breach hash database
+#    - Server-side weak password detection
+#    - HTTPS/TLS encryption
+#    - PingOne DaVinci integration ready
+#
+#  Quick start:
+#    cd scripts/
+#    ./hibp_deploy.sh prereqs    # Install prerequisites
+#    ./hibp_deploy.sh            # Run wizard + full deploy
+#
+#  See: ../HIBP_DEPLOYMENT.md for complete documentation
+# ============================================================================
 
-APP_DIR="/home/ec2-user/app"
-
-# Install dependencies
-sudo yum install -y python3 python3-pip git
-sudo pip3 install flask
-
-# Kill existing process
-sudo pkill -f "python3" || true
-sleep 2
-
-# Clone or pull latest code
-mkdir -p $APP_DIR
-cd $APP_DIR
-
-if [ -d ".git" ]; then
-    git pull
-else
-    git clone https://github.com/mamir08aws-cmyk/jenkins-aws.git .
-fi
-
-# Create log file with correct permissions
-sudo touch /var/log/app.log
-sudo chmod 666 /var/log/app.log
-
-# Start Flask app
-nohup sudo /usr/bin/python3 $APP_DIR/my-app/app/app.py > /var/log/app.log 2>&1 &
-echo "App started. PID: $!"
-sleep 5
-
-# Show status
-echo "=== Process check ==="
-ps aux | grep python3 | grep -v grep || echo "WARNING: python3 not running"
-
-echo "=== App log ==="
-cat /var/log/app.log
-
-echo "=== Port check ==="
-sudo netstat -tlnp | grep :80 || echo "WARNING: nothing on port 80"
+echo ""
+echo "╔══════════════════════════════════════════════════════════════╗"
+echo "║  Legacy Deployment Script                                   ║"
+echo "║  This script has been replaced with hibp_deploy.sh          ║"
+echo "╚══════════════════════════════════════════════════════════════╝"
+echo ""
+echo "The HIBP Password Validation Service is now installed."
+echo ""
+echo "To deploy the new service:"
+echo "  ./hibp_deploy.sh prereqs   # Check/install prerequisites"
+echo "  ./hibp_deploy.sh           # Run wizard + full deployment"
+echo ""
+echo "For documentation, see: ../HIBP_DEPLOYMENT.md"
+echo ""
