@@ -5,7 +5,7 @@ provider "aws" {
 # Key pair — upload your public key to AWS
 resource "aws_key_pair" "deployer" {
   key_name   = "jenkins-deploy-key"
-  public_key = file("~/.ssh/id_rsa.pub")
+  public_key = file("/Users/mohammad.b.amir/.ssh/jenkins-deploy-key.pub")
 }
 
 # Security group — SSH + HTTP
