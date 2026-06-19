@@ -46,7 +46,7 @@ resource "aws_instance" "app_server" {
   user_data = <<-EOF
     #!/bin/bash
     yum update -y
-    yum install -y python3 python3-pip
+    yum install -y python3 python3-pip git
     pip3 install flask
   EOF
 
